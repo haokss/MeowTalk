@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/_ava/ava.png</file>
+    </qresource>
+</RCC>
