@@ -22,9 +22,12 @@ void AddNewTalk::on_pushButton_clicked()
 {
     // 发送添加好友/群请求
     // TODO:: 逻辑上应该先判断是否已经是好友了
+
     std::string str = "0#4#"+std::to_string(SELFUSER.self.id)
             +"#"+search.toStdString()+"#add";
     CSOCKET.SendeMessages(str.c_str());
+
+    // TODO:: 由服务器判断目标是否存在，服务器返回查找结果
     ui->lineEdit->setText("");
 }
 

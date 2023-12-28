@@ -64,7 +64,7 @@ public:
         }
         // 从服务器收到的消息似乎没有'\0'
         RECVBuff[RetVal] = '\0';
-        Meow_now_time();
+        MeowNowTime();
         std::cout<<"[receive from server]:"<<RECVBuff<<std::endl;
         // 解析服务器数据
         mmsg.DeSerialize(RECVBuff);
@@ -93,7 +93,7 @@ public:
 
         // 发送到服务器的消息应该是“标准的”
         RetVal = send(ServerScoket, SendBuff, strlen(SendBuff), 0);
-        Meow_now_time();
+        MeowNowTime();
         std::cout << "[Send to server]:"<<SendBuff<< std::endl;
         if (RetVal == SOCKET_ERROR) {
             std::cout << "send error" << std::endl;
