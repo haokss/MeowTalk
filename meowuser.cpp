@@ -29,8 +29,8 @@ void MeowUser::InitMeowUser(char *userData)
     std::string friendToken;
     // 加载好友列表
     while(std::getline(iss,friendToken,'|')){
-        // 信息中不存在$就直接退出
-        if(friendToken.find("$")==friendToken.npos)
+        // 信息中不存在$或者为空就直接退出
+        if(friendToken.find("$")==friendToken.npos||friendToken == "")
             break;
         std::istringstream friendIss(friendToken);
         std::string token;

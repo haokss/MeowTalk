@@ -20,7 +20,6 @@ UserMain::UserMain(QWidget *parent) :
     // 加载好友列表
     QListWidget* friendListWidget = ui->listWidget;
     friendListWidget->setIconSize(QSize(40, 30)); // 设置头像尺寸
-    // 添加好友条目
 //    friendItem->setWhatsThis("friend_id"); // 设置唯一标识符，用于处理点击事件等
     for (const MeowUserData& friendData : SELFUSER.friends) {
         // 创建 QListWidgetItem
@@ -29,6 +28,11 @@ UserMain::UserMain(QWidget *parent) :
         item->setSizeHint(QSize(80,60));
         // 将 item 添加到 QListWidget
         friendListWidget->addItem(item);
+    }
+
+    // 新的好友请求
+    for(const auto it:SELFUSER.newFriends){
+        std::cout<<"收到好友请求"<<it.send_id<<", "<<it.receive_id<<std::endl;
     }
     connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
 }
