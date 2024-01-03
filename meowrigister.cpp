@@ -1,14 +1,14 @@
-#include "meowrigister.hpp"
-#include "ui_meowrigister.h"
+#include "meowregister.hpp"
+#include "ui_meowregister.h"
 
-MeowRigister::MeowRigister(QWidget *parent) :
+MeowRegister::MeowRegister(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::MeowRigister)
+    ui(new Ui::Meowregister)
 {
     ui->setupUi(this);
 }
 
-MeowRigister::~MeowRigister()
+MeowRegister::~Meowregister()
 {
     delete ui;
 }

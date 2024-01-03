@@ -1,50 +1,74 @@
 #include"MeowMessage.hpp"
-//MeowMessage::MeowMessage(int id, char *pwd){
-//    this->send_time = 0;
-//    this->type = static_cast<MeowDataType>(1);
-//    this->send_id = 0;
-//    this->receive_id = 0;
-//}
 
-MeowMessage::~MeowMessage(){
-    delete []content;
+MeowMessage::MeowMessage(const std::string &line)
+{
+    std::istringstream iss(line);
+    std::string content;
+    MeowMessageType infoType = MeowMessageType::MSGID;
+    while(std::getline(iss,content,'\t')){
+        switch (infoType) {
+        case MeowMessageType::MSGID:{
+            type = static_cast<MeowDataType>(3);
+            infoType = MeowMessageType::SENDER;
+        }break;
+        case MeowMessageType::SENDER:{
+            send_id = std::stoi(content);
+            infoType = MeowMessageType::RECEIVE;
+        }break;
+        case MeowMessageType::RECEIVE:{
+            receive_id = std::stoi(content);
+            infoType = MeowMessageType::CONTENT;
+        }break;
+        case MeowMessageType::CONTENT:{
+            this->content = content.c_str();
+            infoType = MeowMessageType::TIME;
+        }break;
+        case MeowMessageType::TIME:{
+            this->send_time = std::stoi(content);
+        }break;
+        default:
+            std::cerr<<"receive unknow datatype";
+            break;
+        }
+    }
 }
 
-char* MeowMessage::Serialize() const{
+MeowMessage::~MeowMessage(){
+
+}
+
+std::string MeowMessage::Serialize() const{
     std::string data = std::to_string(send_time)+"#"+std::to_string((int)type)+"#"+std::to_string(send_id)+"#"+
     std::to_string(receive_id)+"#"+content;
     std::cout<<"string data:"<<data<<std::endl;
-    char *SerializeData = new char[data.size()+1];
-    strcpy(SerializeData, data.c_str());
-    return SerializeData;
+    return data;
 }
 
 void MeowMessage::DeSerialize(char* Buffer){
-    char * token = strtok(Buffer,"#");
+    const char * token = strtok(Buffer,"#");
     // 默认除Content以外，其他类型都不可能出现\n
-    MeowData md = MeowData::TIME;
+    MeowMessageType md = MeowMessageType::TIME;
     while(token!=NULL){
         switch (md)
         {
-        case MeowData::TIME:{
+        case MeowMessageType::TIME:{
             this->send_time = std::stol(token);
-            md = MeowData::TYPE;
+            md = MeowMessageType::TYPE;
         }break;
-        case MeowData::TYPE:{
+        case MeowMessageType::TYPE:{
             this->type = static_cast<MeowDataType>(std::stoi(token));
-            md = MeowData::SENDER;
+            md = MeowMessageType::SENDER;
         }break;
-        case MeowData::SENDER:{
+        case MeowMessageType::SENDER:{
             send_id = std::stoi(token);
-            md = MeowData::RECEIVE;
+            md = MeowMessageType::RECEIVE;
         }break;
-        case MeowData::RECEIVE:{
+        case MeowMessageType::RECEIVE:{
             receive_id = std::stoi(token);
-            md = MeowData::CONTENT;
+            md = MeowMessageType::CONTENT;
         }break;
-        case MeowData::CONTENT:{
-            content = new char[strlen(token) + 1];
-            strcpy(content, token);
+        case MeowMessageType::CONTENT:{
+            content = token;
         }break;
         default:
             std::cerr<<"receive unknow datatype";
@@ -52,6 +76,5 @@ void MeowMessage::DeSerialize(char* Buffer){
         }
         token = strtok(NULL, "#");
     }
-
 }
 

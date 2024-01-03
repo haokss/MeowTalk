@@ -21,5 +21,9 @@ inline void MeowTimeStampToTime(const std::time_t& time){
     std::cout<<str;
 }
 
+// 获取随机ID
+//int MeowGetRandomId(){
+
+//}
 
 #endif // MEOWBASE_H

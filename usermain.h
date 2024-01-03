@@ -23,9 +23,11 @@ private:
     Ui::UserMain *ui;
     // 创建用户界面的同时生成对应用户
     MeowUser now_user;
+    QMenu *menu;
 private slots:
     void onItemClicked(QListWidgetItem* item);
     void on_pushButton_add_clicked();
+    void on_toolButton_clicked();
 };
 
 #endif // USERMAIN_H

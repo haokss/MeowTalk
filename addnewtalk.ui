@@ -17,7 +17,7 @@
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>20</y>
       <width>601</width>
       <height>301</height>
@@ -26,7 +26,7 @@
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>430</x>
+       <x>490</x>
        <y>0</y>
        <width>91</width>
        <height>51</height>
@@ -39,20 +39,20 @@
     <widget class="QLineEdit" name="lineEdit">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>10</x>
        <y>0</y>
-       <width>401</width>
+       <width>481</width>
        <height>51</height>
       </rect>
      </property>
     </widget>
-    <widget class="QListView" name="listView_newFriend">
+    <widget class="QListWidget" name="listWidget">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>60</y>
-       <width>541</width>
-       <height>241</height>
+       <x>10</x>
+       <y>50</y>
+       <width>571</width>
+       <height>251</height>
       </rect>
      </property>
     </widget>

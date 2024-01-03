@@ -1,5 +1,13 @@
 <RCC>
     <qresource prefix="/">
         <file>res/_ava/ava.png</file>
+        <file>cache/111111/222222.txt</file>
+        <file>res/bg/main_bg.jpg</file>
+        <file>res/bg/white.jpg</file>
+        <file>res/bg/up.jpg</file>
+        <file>res/bg/delete.png</file>
+        <file>res/bg/min.png</file>
+        <file>res/bg/password.png</file>
+        <file>res/bg/user.png</file>
     </qresource>
 </RCC>

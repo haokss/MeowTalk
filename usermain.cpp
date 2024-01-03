@@ -23,16 +23,34 @@ UserMain::UserMain(QWidget *parent) :
 //    friendItem->setWhatsThis("friend_id"); // 设置唯一标识符，用于处理点击事件等
     for (const MeowUserData& friendData : SELFUSER.friends) {
         // 创建 QListWidgetItem
-        QListWidgetItem *item = new QListWidgetItem(QIcon("D:\\Qt_Project\\Sql\\res\\_ava\\ava.png"),
+        QListWidgetItem *item = new QListWidgetItem(QIcon(":/res/_ava/ava.png"),
                                          friendData.name.c_str());
         item->setSizeHint(QSize(80,60));
         // 将 item 添加到 QListWidget
         friendListWidget->addItem(item);
     }
+    // 设置项
+    QToolButton *toolButton = ui->toolButton;
+    toolButton->setText("Menu");
+    toolButton->setPopupMode(QToolButton::MenuButtonPopup);
+
+    // 创建 QMenu
+    menu = new QMenu(this);
+    // 添加菜单项
+    QAction *menuItem = new QAction("修改密码 ", this);
+//    connect(menuItem, &QAction::triggered, this, &YourClass::onMenuItemClicked);
+    menu->addAction(menuItem);
+
+    menuItem = new QAction("退出 ", this);
+//    connect(menuItem, &QAction::triggered, this, &YourClass::onMenuItemClicked);
+    menu->addAction(menuItem);
+
+    // 将 QMenu 关联到 QToolButton
+    toolButton->setMenu(menu);
 
     // 新的好友请求
     for(const auto it:SELFUSER.newFriends){
-        std::cout<<"收到好友请求"<<it.send_id<<", "<<it.receive_id<<std::endl;
+        std::cout<<"收到好友请求 "<<it.send_id<<", "<<it.receive_id<<std::endl;
     }
     connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
 }
@@ -60,4 +78,22 @@ void UserMain::on_pushButton_add_clicked()
 {
     AddNewTalk *ant = new AddNewTalk();
     ant->show();
+}
+
+void UserMain::on_toolButton_clicked()
+{
+    // 获取按钮的全局坐标
+    QToolButton *toolButton = ui->toolButton;
+    QPoint globalPos = toolButton->mapToGlobal(QPoint(0, toolButton->height()));
+
+    // 调整位置以确保菜单向上展开
+    int screenHeight = QApplication::desktop()->screenGeometry().height();
+    int menuHeight = menu->sizeHint().height();
+
+    if (globalPos.y() + menuHeight > screenHeight) {
+        globalPos.setY(globalPos.y() - menuHeight - toolButton->height());
+    }
+
+    // 弹出菜单
+    menu->exec(globalPos);
 }

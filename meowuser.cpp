@@ -4,26 +4,38 @@ extern MeowUser SELFUSER;
 bool login_Meow(int _id, std::string _pwd)
 {
     std::string meowStr= "0#1#"+std::to_string(_id)+"#0#"+std::to_string(_id)+"$"+_pwd;
-    char *meowMsg = new char(meowStr.size());
-    strcpy(meowMsg,meowStr.c_str());
+    const char *meowMsg = meowStr.c_str();
     // 将封装的消息发送
     CSOCKET.SendeMessages(meowMsg);
     // 等待回传
     MeowMessage mmsg;
     CSOCKET.ReceiveMessages(mmsg);
-    if(strcmp(mmsg.content,"1")==0){
+    if(mmsg.content=="1"){
         CSOCKET.ReceiveMessages(mmsg);
         // 初始化SELFUSER
         SELFUSER.InitMeowUser(mmsg.content);
+        // 首次登录创建缓存
+        std::string path = "D:/Qt_Project/Sql/cache/"+std::to_string(_id);
+        if(access(path.c_str(),0)==-1){
+            mkdir(path.c_str());
+        }
         return true;
     }else{
         return false;
     }
-
-    delete meowMsg;
+}
+bool register_Meow(int id,std::string username,std::string password){
+    std::string msg = "0#2#"+std::to_string(id)+"#0#"+username+"$"+password;
+    CSOCKET.SendeMessages(msg.c_str());
+    MeowMessage mmsg;
+    if(mmsg.content=="1"){
+        return true;
+    }else{
+        return false;
+    }
 }
 
-void MeowUser::InitMeowUser(char *userData)
+void MeowUser::InitMeowUser(const std::string &userData)
 {
     std::istringstream iss(userData);
     std::string friendToken;
@@ -66,13 +78,14 @@ void MeowUser::InitMeowUser(char *userData)
         if(friends.name!="")
             this->friends.push_back(friends);
     }
-    // 加载newfriend message
+    // 加载好友请求消息
     MeowMessage mmsg;
     CSOCKET.ReceiveMessages(mmsg);
-    while(strcmp(mmsg.content,"0")!=0){
+    while(mmsg.content != "0"){
         newFriends.push_back(mmsg);
         CSOCKET.ReceiveMessages(mmsg);
     }
+
 }
 
 void MeowUserData::printMeowUserData() const

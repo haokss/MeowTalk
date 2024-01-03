@@ -3,10 +3,11 @@
 
 #include <QMainWindow>
 #include <QStandardItemModel>
+#include <thread>
+#include <fstream>
 #include "meowuser.h"
 #include "InitSocket.hpp"
-#include <thread>
-#include <qthread.h>
+
 namespace Ui {
 class UserTalk;
 }
@@ -20,9 +21,13 @@ public:
     ~UserTalk();
 public:
     void addMessageToListView(const QString &message);
+    void loadLocalMessage(const std::string& path);
+    void updateLocalMessage();
     void startReceiveThread();
 public:
     MeowUserData meowTalkData;
+    std::vector<MeowMessage> historyMessage;
+    std::string cachePath;
     QString input;
     QStandardItemModel *itemModel;
 private slots:

@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "usermain.h"
-
+#include "meowregister.hpp"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -24,7 +24,6 @@ void MainWindow::on_pushButton_main_login_clicked()
     std::string password = this->ui->lineEdit_password->text().toStdString();
     // 判断登录信息
     if(login_Meow(user_id,password)==true){
-//        load_New_Message();
         this->close();
         UserMain *usermain = new UserMain;
         usermain->show();
@@ -36,4 +35,10 @@ void MainWindow::on_pushButton_main_login_clicked()
 void MainWindow::on_pushButton_exit_clicked()
 {
      this->close();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    MeowRegister *meowReg = new MeowRegister;
+    meowReg->show();
 }

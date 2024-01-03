@@ -26,7 +26,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
-
+# 设置可执行文件输出路径为 build 目录下
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
 if(ANDROID)
   add_library(Sql SHARED
@@ -60,10 +61,14 @@ else()
     AddNewTalk.h
     AddNewTalk.cpp
     AddNewTalk.ui
+    meowregister.hpp
+    meowregister.cpp
+    meowregister.ui
     MeowBase.h
     res.qrc
   )
 endif()
+
 
 target_link_libraries(Sql PRIVATE Qt5::Widgets)
 
