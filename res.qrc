@@ -9,5 +9,13 @@
         <file>res/bg/min.png</file>
         <file>res/bg/password.png</file>
         <file>res/bg/user.png</file>
+        <file>res/bg/search.png</file>
+        <file>res/bg/menu.png</file>
+        <file>res/bg/new.png</file>
+        <file>res/bg/logo.png</file>
+        <file>res/_ava/boy.png</file>
+        <file>res/_ava/girl.png</file>
+        <file>res/bg/two.png</file>
+        <file>res/bg/leone.jpg</file>
     </qresource>
 </RCC>

@@ -26,8 +26,11 @@ bool login_Meow(int _id, std::string _pwd)
 }
 bool register_Meow(int id,std::string username,std::string password){
     std::string msg = "0#2#"+std::to_string(id)+"#0#"+username+"$"+password;
+    std::cout<<msg<<std::endl;
     CSOCKET.SendeMessages(msg.c_str());
     MeowMessage mmsg;
+    // 等待回传
+    CSOCKET.ReceiveMessages(mmsg);
     if(mmsg.content=="1"){
         return true;
     }else{
@@ -65,10 +68,19 @@ void MeowUser::InitMeowUser(const std::string &userData)
                 infoType = MeowInfoType::SIGN;
             }break;
             case MeowInfoType::SIGN:{
-                if(self.sign=="")
+                if(self.sign==""){
                     self.sign = token;
+                    infoType = MeowInfoType::SEX;
+                }
                 else
                     friends.sign = token;
+            }break;
+            case MeowInfoType::SEX:{
+                    self.sex = std::stoi(token);
+                    infoType = MeowInfoType::TELEPHONE;
+            }break;
+            case MeowInfoType::TELEPHONE:{
+                    self.telephone = token;
             }break;
             default:
                 std::cerr<<"receive unknow datatype";

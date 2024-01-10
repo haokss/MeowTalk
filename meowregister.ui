@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>791</width>
-    <height>387</height>
+    <width>733</width>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,18 +16,18 @@
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>20</y>
-     <width>631</width>
-     <height>371</height>
+     <x>0</x>
+     <y>140</y>
+     <width>731</width>
+     <height>261</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="pushButton_register">
+   <widget class="QPushButton" name="pushButton_cancel">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>270</y>
-      <width>111</width>
+      <x>400</x>
+      <y>190</y>
+      <width>191</width>
       <height>51</height>
      </rect>
     </property>
@@ -35,12 +35,12 @@
      <string>取消</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_cancel">
+   <widget class="QPushButton" name="pushButton_register">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>270</y>
-      <width>111</width>
+      <x>130</x>
+      <y>190</y>
+      <width>191</width>
       <height>51</height>
      </rect>
     </property>
@@ -51,8 +51,8 @@
    <widget class="QLabel" name="label_username">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>90</y>
+      <x>10</x>
+      <y>150</y>
       <width>54</width>
       <height>12</height>
      </rect>
@@ -64,8 +64,8 @@
    <widget class="QLabel" name="label_password">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>150</y>
+      <x>360</x>
+      <y>50</y>
       <width>54</width>
       <height>20</height>
      </rect>
@@ -77,8 +77,8 @@
    <widget class="QLabel" name="label_check">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>200</y>
+      <x>350</x>
+      <y>130</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -90,9 +90,9 @@
    <widget class="QLineEdit" name="lineEdit_username">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>70</y>
-      <width>211</width>
+      <x>70</x>
+      <y>130</y>
+      <width>241</width>
       <height>41</height>
      </rect>
     </property>
@@ -100,9 +100,9 @@
    <widget class="QLineEdit" name="lineEdit_password">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>130</y>
-      <width>201</width>
+      <x>420</x>
+      <y>40</y>
+      <width>241</width>
       <height>41</height>
      </rect>
     </property>
@@ -110,9 +110,9 @@
    <widget class="QLineEdit" name="lineEdit_check">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>190</y>
-      <width>211</width>
+      <x>420</x>
+      <y>120</y>
+      <width>241</width>
       <height>41</height>
      </rect>
     </property>
@@ -120,9 +120,9 @@
    <widget class="QLineEdit" name="lineEdit_id">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>10</y>
-      <width>201</width>
+      <x>70</x>
+      <y>40</y>
+      <width>241</width>
       <height>41</height>
      </rect>
     </property>
@@ -130,8 +130,8 @@
    <widget class="QLabel" name="label_id">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>30</y>
+      <x>10</x>
+      <y>50</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -140,6 +140,50 @@
      <string>账号：</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>741</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/res/bg/white.jpg&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <zorder>label_2</zorder>
+   <zorder>pushButton_cancel</zorder>
+   <zorder>pushButton_register</zorder>
+   <zorder>label_username</zorder>
+   <zorder>label_password</zorder>
+   <zorder>label_check</zorder>
+   <zorder>lineEdit_username</zorder>
+   <zorder>lineEdit_password</zorder>
+   <zorder>lineEdit_check</zorder>
+   <zorder>lineEdit_id</zorder>
+   <zorder>label_id</zorder>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>741</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+  &lt;p&gt;
+    &lt;img style=&quot;background-color: white;&quot; src=&quot;:/res/bg/up.jpg&quot; width=&quot;732&quot; height=&quot;520&quot;/&gt;
+  &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+   </property>
   </widget>
  </widget>
  <resources/>

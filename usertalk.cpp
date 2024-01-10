@@ -35,6 +35,7 @@ UserTalk::~UserTalk()
     // 每次关闭对话窗口之后都从数据库中同步到本地最新的聊天记录
 
     delete ui;
+    delete itemModel;
 }
 // 绑定消息槽
 void UserTalk::onTextChanged(const QString& newText) {

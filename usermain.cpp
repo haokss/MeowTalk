@@ -2,6 +2,7 @@
 #include "ui_usermain.h"
 #include "qlistwidget.h"
 #include "QListWidgetItem"
+#include "delfriend.h"
 extern MeowUser SELFUSER;
 UserMain::UserMain(QWidget *parent) :
     QMainWindow(parent),
@@ -9,13 +10,17 @@ UserMain::UserMain(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("MeowTalk");
+    // 加载头像
+    AvaButton *ava = new AvaButton(SELFUSER.self);
+    ava->setParent(this);
+    ava->setGeometry(20,30,100,100);
     // 加载用户名
     QLabel *label_name = ui->label;
-    std::string self_name = "用户名: "+SELFUSER.self.name;
+    std::string self_name = SELFUSER.self.name;
     label_name->setText(QString::fromStdString(self_name));
     // 加载签名
     QLabel *label_sign = ui->label_2;
-    std::string self_sign = "sign: "+SELFUSER.self.sign;
+    std::string self_sign = "签名："+SELFUSER.self.sign;
     label_sign->setText(QString::fromStdString(self_sign));
     // 加载好友列表
     QListWidget* friendListWidget = ui->listWidget;
@@ -23,7 +28,7 @@ UserMain::UserMain(QWidget *parent) :
 //    friendItem->setWhatsThis("friend_id"); // 设置唯一标识符，用于处理点击事件等
     for (const MeowUserData& friendData : SELFUSER.friends) {
         // 创建 QListWidgetItem
-        QListWidgetItem *item = new QListWidgetItem(QIcon(":/res/_ava/ava.png"),
+        QListWidgetItem *item = new QListWidgetItem(QIcon(":/res/_ava/boy.png"),
                                          friendData.name.c_str());
         item->setSizeHint(QSize(80,60));
         // 将 item 添加到 QListWidget
@@ -38,11 +43,11 @@ UserMain::UserMain(QWidget *parent) :
     menu = new QMenu(this);
     // 添加菜单项
     QAction *menuItem = new QAction("修改密码 ", this);
-//    connect(menuItem, &QAction::triggered, this, &YourClass::onMenuItemClicked);
     menu->addAction(menuItem);
-
+    QAction *menuItemDeleteFriend = new QAction("删除好友",this);
+    menu->addAction(menuItemDeleteFriend);
+    connect(menuItemDeleteFriend, &QAction::triggered, this, &UserMain::onDeleteFriend);
     menuItem = new QAction("退出 ", this);
-//    connect(menuItem, &QAction::triggered, this, &YourClass::onMenuItemClicked);
     menu->addAction(menuItem);
 
     // 将 QMenu 关联到 QToolButton
@@ -72,6 +77,11 @@ void UserMain::onItemClicked(QListWidgetItem *item)
         // MeowUserData 似乎需要拷贝构造函数
         usertalk_id->show();
     }
+}
+void UserMain::onDeleteFriend() {
+    // 处理删除好友的逻辑
+    DelFriend *del = new DelFriend();
+    del->show();
 }
 
 void UserMain::on_pushButton_add_clicked()

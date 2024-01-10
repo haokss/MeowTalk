@@ -93,6 +93,26 @@
       </rect>
      </property>
     </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>-70</x>
+       <y>20</y>
+       <width>701</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+  &lt;p&gt;
+    &lt;img style=&quot;background-color: white;&quot; src=&quot;:/res/bg/two.png&quot; width=&quot;20&quot; height=&quot;20&quot;/&gt;
+  &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="widget_2" native="true">
     <property name="geometry">
@@ -162,7 +182,7 @@
       <x>0</x>
       <y>0</y>
       <width>701</width>
-      <height>161</height>
+      <height>141</height>
      </rect>
     </property>
     <widget class="QLabel" name="label_title">
@@ -230,44 +250,27 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>701</width>
-       <height>161</height>
+       <width>711</width>
+       <height>141</height>
       </rect>
      </property>
      <property name="text">
-      <string>
-&lt;html&gt;
- 
-	&lt;head&gt;
-		&lt;meta charset=&quot;utf-8&quot; /&gt;
-		&lt;title&gt;&lt;/title&gt;
-		&lt;style&gt;
-			body {
-				padding: 0;
-				margin: 0;
-			}
-			
-			img {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-			}
-		&lt;/style&gt;
-	&lt;/head&gt;
- 
-	&lt;body&gt;
-		&lt;img src=&quot;:/res/bg/up.jpg&quot; wight = &quot;150&quot; height= &quot;701&quot;&gt;
-	&lt;/body&gt;
- 
+      <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+  &lt;p&gt;
+    &lt;img style=&quot;background-color: white;&quot; src=&quot;:/res/bg/up.jpg&quot; width=&quot;700&quot; height=&quot;500&quot;/&gt;
+  &lt;/p&gt;
+&lt;/body&gt;
 &lt;/html&gt;</string>
      </property>
     </widget>
-    <zorder>label_4</zorder>
+    <zorder>label_6</zorder>
     <zorder>label_title</zorder>
     <zorder>pushButton_min</zorder>
     <zorder>pushButton_exit</zorder>
@@ -275,10 +278,10 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>140</y>
-      <width>701</width>
-      <height>331</height>
+      <x>-10</x>
+      <y>100</y>
+      <width>711</width>
+      <height>371</height>
      </rect>
     </property>
     <property name="text">

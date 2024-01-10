@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 #include "usermain.h"
 #include "meowregister.hpp"
+#include "avabutton.hpp"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)

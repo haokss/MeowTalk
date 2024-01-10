@@ -64,6 +64,17 @@ else()
     meowregister.hpp
     meowregister.cpp
     meowregister.ui
+    UserInfo.hpp
+    UserInfo.cpp
+    UserInfo.ui
+    UserSampleInfo.hpp
+    UserSampleInfo.cpp
+    UserSampleInfo.ui
+    DelFriend.h
+    DelFriend.cpp
+    DelFriend.ui
+    AvaButton.hpp
+    AvaButton.cpp
     MeowBase.h
     res.qrc
   )

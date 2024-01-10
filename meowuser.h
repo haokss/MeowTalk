@@ -7,7 +7,7 @@
 #include<io.h>
 #include "InitSocket.hpp"
 enum class MeowInfoType{
-    ID = 1, NAME = 2, SIGN =3
+    ID = 1, NAME = 2, SIGN =3, SEX = 4, TELEPHONE = 5
 };
 
 class MeowUserData
@@ -20,6 +20,8 @@ public:
     int id;
     std::string name;
     std::string sign;
+    bool sex;
+    std::string telephone;
 };
 
 class MeowUser{

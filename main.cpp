@@ -12,8 +12,11 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     //设置中文字体
-     a.setFont(QFont("Microsoft Yahei", 9));
+    QIcon icon(":/res/bg/logo.png");
+    a.setFont(QFont("Microsoft Yahei", 9));
     MainWindow w;
+    w.setWindowIcon(icon);
+    QApplication::setWindowIcon(icon);
     w.show();
 
     return a.exec();
